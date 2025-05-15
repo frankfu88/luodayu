@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-white text-gray-900">
         <Navbar /> {/* ✅ Navbar 一直顯示 */}
-        {!isPricingPage && <Banner />} {/* ✅ 只有非價格一覽頁面才顯示 Banner */}
+        {!isPricingPage && <Banner />}
 
         {/* 🔹 主要內容 */}
         <main className="pt-[100px] px-4">{children}</main>
