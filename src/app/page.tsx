@@ -10,10 +10,10 @@ import {
   FaChevronDown,
   FaChevronUp
 } from "react-icons/fa";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const servicesDetailed = [
-  
+
   {
     label: "眼科門診",
     treatments: [
@@ -220,7 +220,7 @@ const servicesDetailed = [
 ];
 
 export default function Home() {
-  // const router = useRouter();
+  const router = useRouter();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (index: number) => {
@@ -329,43 +329,54 @@ export default function Home() {
             >
               <ul className="list-disc list-inside space-y-1 text-base text-gray-700">
               {service.treatments.map((treatment, i) => {
-  if (typeof treatment === "string" || React.isValidElement(treatment)) {
-    return <li key={i}>{treatment}</li>;
-  } else if (
-    typeof treatment === "object" &&
-    "label" in treatment &&
-    Array.isArray(treatment.subitems)
-  ) {
-    return (
-      <li key={i}>
-        {treatment.label}
-        <ul className="list-disc list-inside ml-5 mt-1 space-y-1">
-          {treatment.subitems.map((sub, j) => (
-            <li key={j}>{sub}</li>
-          ))}
-        </ul>
-      </li>
-    );
-  } else if (
-    typeof treatment === "object" &&
-    "type" in treatment &&
-    treatment.type === "paragraph" &&
-    "content" in treatment
-  ) {
-    return (
-      <li key={i} className="list-none">
-        <p className="text-gray-700 leading-relaxed">{treatment.content}</p>
-      </li>
-    );
-  } else {
-    return null;
-  }
-})}
-
+                  if (typeof treatment === "string" || React.isValidElement(treatment)) {
+                    return <li key={i}>{treatment}</li>;
+                  } else if (
+                    typeof treatment === "object" &&
+                    "label" in treatment &&
+                    Array.isArray(treatment.subitems)
+                  ) {
+                    return (
+                      <li key={i}>
+                        {treatment.label}
+                        <ul className="list-disc list-inside ml-5 mt-1 space-y-1">
+                          {treatment.subitems.map((sub, j) => (
+                            <li key={j}>{sub}</li>
+                          ))}
+                        </ul>
+                      </li>
+                    );
+                  } else if (
+                    typeof treatment === "object" &&
+                    "type" in treatment &&
+                    treatment.type === "paragraph" &&
+                    "content" in treatment
+                  ) {
+                    return (
+                      <li key={i} className="list-none">
+                        <p className="text-gray-700 leading-relaxed">{treatment.content}</p>
+                      </li>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
               </ul>
             </div>
           </div>
+          
         ))}
+        {/* 🔹 諾亞寵物高壓氧 - 可點擊導向 `/oxygen` */}
+        <div
+              onClick={() => router.push("/oxygen")}
+              className="flex items-center gap-2 bg-[#E6D6CC] text-gray-800 rounded-xl shadow-md p-6 cursor-pointer hover:bg-[#d5c3b8] transition"
+            >
+              <FaPaw className="text-yellow-500 text-2xl" />
+              <div>
+                <h3 className="text-xl font-bold text-[#5A4032]">諾亞寵物高壓氧</h3>
+                <p className="text-base mt-1 text-gray-700">點擊了解高壓氧療法如何提升毛孩康復與健康。</p>
+              </div>
+            </div>
       </div>
     </section>
 
