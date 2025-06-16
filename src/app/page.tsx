@@ -298,7 +298,7 @@ export default function Home() {
       </section>
 
       {/* 🔹 主治項目 */}
-      <section className="max-w-6xl mx-auto py-16 px-6 text-center bg-[#9D8575] text-white shadow-xl rounded-xl">
+      <section id="services" className="max-w-6xl mx-auto py-16 px-6 text-center bg-[#9D8575] text-white shadow-xl rounded-xl">
       <h2 className="text-4xl font-bold flex items-center justify-center gap-2">
         <FaPaw className="text-yellow-500" /> 主治項目
       </h2>
